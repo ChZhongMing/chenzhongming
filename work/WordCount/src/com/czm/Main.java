@@ -262,7 +262,7 @@ public class Main {
                     flag = true;
                 }
             }else{  //子文件是目录
-                childFlag = childFlag || ReadFold(operation, f.getName(), f.listFiles(), frontName, extension);
+                childFlag = ReadFold(operation, f.getName(), f.listFiles(), frontName, extension) || childFlag ;
             }
 
         }

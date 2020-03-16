@@ -16,7 +16,7 @@ public class MainTest {
     public void FolderCountTest(){
 
 //        Main.FolderCount("-a","./测试文件",".txt");
-        Main.FolderCount("-a","./测试文件","est.txt");
+        Main.FolderCount("-a","./测试文件","e.txt");
 //        Main.FolderCount("-a","./测试文件",".java");
     }
 
