@@ -38,4 +38,17 @@ public class MainTest {
         fraction.divide(2);
         System.out.println("除以2："+fraction);
     }
+
+    @Test
+    public void test(){
+        String tt = "25";
+//        long start1 = System.currentTimeMillis();
+//        System.out.println("+".equals(tt) || "-".equals(tt));
+//        System.out.println(start1);
+//        System.out.println(System.currentTimeMillis());
+//        long start2 = System.currentTimeMillis();
+        System.out.println(tt.matches("25|t"));
+//        System.out.println(start2);
+//        System.out.println(System.currentTimeMillis());
+    }
 }

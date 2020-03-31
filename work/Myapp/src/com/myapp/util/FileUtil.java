@@ -2,9 +2,7 @@ package com.myapp.util;
 
 import java.io.*;
 import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 文件操作工具类
@@ -44,7 +42,8 @@ public class FileUtil {
     }
 
 
-    public static Map<String, String> readQuestion(String questionFileName, String answerFileName) {
+
+    public static List<String>[] readQuestion(String questionFileName, String answerFileName) {
         BufferedReader questionReader = GetFileInputStream(questionFileName);
         if (questionReader == null) {
             return null;
@@ -61,7 +60,9 @@ public class FileUtil {
         }
         String question;
         String answer;
-        Map<String, String> exercises = new HashMap<>();
+        List<String>[] exercises = new List[2];
+        exercises[0] = new ArrayList<>();
+        exercises[1] = new ArrayList<>();
         try {
             while (true) {
                 //题目
@@ -72,7 +73,8 @@ public class FileUtil {
                 if (question == null || answer == null) {
                     break;
                 }
-                exercises.put(question.substring(question.indexOf(',')+1), answer.substring(answer.indexOf(',')+1));
+                exercises[0].add(question.substring(question.indexOf(',')+1));
+                exercises[1].add(answer.substring(answer.indexOf(',')+1));
             }
 
         } catch (IOException e) {

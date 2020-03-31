@@ -168,7 +168,7 @@ public class Fraction {
      * @param b
      * @return
      */
-    public static int getCommonDivisor(int a, int b) {
+    private static int getCommonDivisor(int a, int b) {
         if (b == 0) {
             return a;
         } else {
