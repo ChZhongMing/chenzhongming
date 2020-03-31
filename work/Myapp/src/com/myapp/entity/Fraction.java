@@ -56,11 +56,15 @@ public class Fraction {
 
     /**
      * 减法一个整数
-     *
      * @param num
      */
-    public void reduce(int num) {
+    public boolean reduce(int num) {
         this.integer -= num;
+        if (this.integer < 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -68,7 +72,7 @@ public class Fraction {
      *
      * @param fraction
      */
-    public void reduce(Fraction fraction) {
+    public boolean reduce(Fraction fraction) {
         this.integer -= fraction.getInteger();
         if (this.denominator == fraction.getDenominator()) {
             this.molecule -= fraction.getMolecule();
@@ -82,7 +86,11 @@ public class Fraction {
             this.molecule += this.denominator;
             this.integer--;
         }
-
+        if (this.integer < 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
@@ -111,12 +119,18 @@ public class Fraction {
             this.molecule += this.integer * this.denominator;
             this.integer = 0;
         }
-        if(fraction.getInteger() != 0) {
-            fraction.setMolecule(fraction.getInteger() * fraction.getDenominator() +fraction.getMolecule());
-            fraction.setInteger(0);
-        }
-        this.molecule *= fraction.molecule;
+
+//        if(fraction.getInteger() != 0) {
+//            fraction.setMolecule(fraction.getInteger() * fraction.getDenominator() +fraction.getMolecule());
+//            fraction.setInteger(0);
+//        }
+//        this.molecule *= fraction.molecule;
+
+        //不改参数
+        this.molecule *= fraction.getInteger() * fraction.getDenominator() +fraction.getMolecule();
+
         this.denominator *= fraction.getDenominator();
+
     }
 
     /**
@@ -140,11 +154,11 @@ public class Fraction {
             this.integer = 0;
         }
         if(fraction.getInteger() != 0) {
-            fraction.setMolecule(fraction.getInteger() * fraction.getDenominator() +fraction.getMolecule());
-            fraction.setInteger(0);
+            this.denominator *= fraction.getInteger() * fraction.getDenominator() +fraction.getMolecule();
+        }else {
+            this.denominator *= fraction.getMolecule();
         }
         this.molecule *= fraction.getDenominator();
-        this.denominator *= fraction.getMolecule();
     }
 
     /**
@@ -165,8 +179,10 @@ public class Fraction {
         }
     }
 
-    @Override
-    public String toString() {
+    /**
+     * 化简
+     */
+    public void simplification(){
         //化简
         if (this.molecule > this.denominator) {
             this.integer += this.molecule / this.denominator;
@@ -176,7 +192,11 @@ public class Fraction {
         int commonDivisor = getCommonDivisor(this.denominator, this.molecule);
         this.denominator /= commonDivisor;
         this.molecule /= commonDivisor;
+    }
 
+    @Override
+    public String toString() {
+        simplification();
         if (this.molecule == 0){
             //分子为0
             return this.integer+"";

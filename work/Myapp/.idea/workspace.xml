@@ -18,46 +18,17 @@
       <file leaf-file-name="Fraction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/myapp/entity/Fraction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="128" column="8" selection-start-line="128" selection-start-column="8" selection-end-line="128" selection-end-column="8" />
+            <state relative-caret-position="4215">
+              <caret line="247" column="1" lean-forward="true" selection-start-line="247" selection-start-column="1" selection-end-line="247" selection-end-column="1" />
               <folding>
-                <element signature="e#1180#1181#0" expanded="true" />
-                <element signature="e#1215#1216#0" expanded="true" />
-                <element signature="e#1450#1451#0" expanded="true" />
-                <element signature="e#1526#1527#0" expanded="true" />
-                <element signature="e#1557#1558#0" expanded="true" />
-                <element signature="e#1587#1588#0" expanded="true" />
-                <element signature="e#1630#1631#0" expanded="true" />
-                <element signature="e#1668#1669#0" expanded="true" />
-                <element signature="e#1700#1701#0" expanded="true" />
-                <element signature="e#1731#1732#0" expanded="true" />
-                <element signature="e#1776#1777#0" expanded="true" />
-                <element signature="e#1816#1817#0" expanded="true" />
-                <element signature="e#1851#1852#0" expanded="true" />
-                <element signature="e#1885#1886#0" expanded="true" />
-                <element signature="e#1936#1937#0" expanded="true" />
-                <element signature="e#1982#1983#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransformUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/myapp/util/TransformUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/com/myapp/MainTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="20" column="9" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="20" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#4624#4625#0" expanded="true" />
+                <element signature="e#4700#4701#0" expanded="true" />
+                <element signature="e#4731#4732#0" expanded="true" />
+                <element signature="e#4761#4762#0" expanded="true" />
+                <element signature="e#4804#4805#0" expanded="true" />
+                <element signature="e#4842#4843#0" expanded="true" />
+                <element signature="e#5110#5111#0" expanded="true" />
+                <element signature="e#5156#5157#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,8 +37,29 @@
       <file leaf-file-name="FileUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/myapp/util/FileUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
+            <state relative-caret-position="474">
               <caret line="74" column="26" lean-forward="true" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TransformUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/myapp/util/TransformUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/com/myapp/MainTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="409">
+              <caret line="28" column="42" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,6 +76,12 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>fraction</find>
+      <find>set</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -166,17 +164,19 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="231" />
-    <option name="y" value="200" />
-    <option name="width" value="1545" />
-    <option name="height" value="893" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="177" />
+    <option name="y" value="61" />
+    <option name="width" value="1482" />
+    <option name="height" value="905" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -231,9 +231,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -443,47 +441,48 @@
       <workItem from="1585461596396" duration="2663000" />
       <workItem from="1585464921242" duration="15728000" />
       <workItem from="1585535276646" duration="602000" />
-      <workItem from="1585546080184" duration="13573000" />
+      <workItem from="1585546080184" duration="14401000" />
+      <workItem from="1585621753842" duration="5169000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 25m 48s.xml">
+    <history-entry file="MainTest_main - 2020.03.30 at 23h 46m 50s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 32m 25s.xml">
+    <history-entry file="MainTest_main - 2020.03.31 at 10h 52m 07s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 33m 14s.xml">
+    <history-entry file="MainTest_main - 2020.03.31 at 11h 26m 54s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 35m 00s.xml">
+    <history-entry file="MainTest_main - 2020.03.31 at 11h 38m 33s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 36m 46s.xml">
+    <history-entry file="MainTest_main - 2020.03.31 at 11h 39m 55s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 37m 06s.xml">
+    <history-entry file="MainTest_main - 2020.03.31 at 11h 55m 06s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 38m 57s.xml">
+    <history-entry file="MainTest_main - 2020.03.31 at 12h 01m 40s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 40m 43s.xml">
+    <history-entry file="MainTest_main - 2020.03.31 at 12h 03m 52s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 41m 14s.xml">
+    <history-entry file="MainTest_main - 2020.03.31 at 14h 17m 17s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MainTest_main - 2020.03.30 at 23h 45m 10s.xml">
+    <history-entry file="MainTest_main - 2020.03.31 at 14h 22m 40s.xml">
       <configuration name="MainTest.main" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36847000" />
+    <option name="totallyTimeSpent" value="42844000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="162" y="42" width="1185" height="724" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -492,15 +491,15 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50067025" side_tool="true" weight="0.53276354" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50159407" side_tool="true" weight="0.33333334" />
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.36467236" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840596" weight="0.07482993" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1883378" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23070097" />
       <window_info anchor="bottom" id="Problems" order="8" />
       <window_info anchor="bottom" id="JProfiler" order="10" />
       <window_info anchor="right" id="Database" order="6" />
@@ -521,7 +520,7 @@
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info id="Image Layers" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32621083" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840596" visible="true" weight="0.07482993" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
@@ -530,15 +529,15 @@
       <window_info id="Capture Tool" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" weight="0.32905984" />
-      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50159407" side_tool="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32905984" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Problems" order="8" />
       <window_info anchor="bottom" id="JProfiler" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19034852" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23070097" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -547,7 +546,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.46296296" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.22079772" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -558,18 +557,27 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/com/myapp/MainTest.java</url>
-          <line>15</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/myapp/entity/Fraction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4906">
+          <caret line="223" column="5" lean-forward="true" selection-start-line="221" selection-start-column="4" selection-end-line="223" selection-end-column="5" />
+          <folding>
+            <element signature="e#4624#4625#0" expanded="true" />
+            <element signature="e#4700#4701#0" expanded="true" />
+            <element signature="e#4731#4732#0" expanded="true" />
+            <element signature="e#4761#4762#0" expanded="true" />
+            <element signature="e#4804#4805#0" expanded="true" />
+            <element signature="e#4842#4843#0" expanded="true" />
+            <element signature="e#5110#5111#0" expanded="true" />
+            <element signature="e#5156#5157#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/myapp/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
@@ -584,9 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -621,9 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -715,15 +717,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/myapp/util/FileUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
+        <state relative-caret-position="474">
           <caret line="74" column="26" lean-forward="true" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -731,42 +730,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/myapp/util/TransformUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/com/myapp/entity/Fraction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+        <state relative-caret-position="4215">
+          <caret line="247" column="1" lean-forward="true" selection-start-line="247" selection-start-column="1" selection-end-line="247" selection-end-column="1" />
+          <folding>
+            <element signature="e#4624#4625#0" expanded="true" />
+            <element signature="e#4700#4701#0" expanded="true" />
+            <element signature="e#4731#4732#0" expanded="true" />
+            <element signature="e#4761#4762#0" expanded="true" />
+            <element signature="e#4804#4805#0" expanded="true" />
+            <element signature="e#4842#4843#0" expanded="true" />
+            <element signature="e#5110#5111#0" expanded="true" />
+            <element signature="e#5156#5157#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/myapp/entity/Fraction.java">
+    <entry file="file://$PROJECT_DIR$/src/com/myapp/util/TransformUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="128" column="8" selection-start-line="128" selection-start-column="8" selection-end-line="128" selection-end-column="8" />
-          <folding>
-            <element signature="e#1180#1181#0" expanded="true" />
-            <element signature="e#1215#1216#0" expanded="true" />
-            <element signature="e#1450#1451#0" expanded="true" />
-            <element signature="e#1526#1527#0" expanded="true" />
-            <element signature="e#1557#1558#0" expanded="true" />
-            <element signature="e#1587#1588#0" expanded="true" />
-            <element signature="e#1630#1631#0" expanded="true" />
-            <element signature="e#1668#1669#0" expanded="true" />
-            <element signature="e#1700#1701#0" expanded="true" />
-            <element signature="e#1731#1732#0" expanded="true" />
-            <element signature="e#1776#1777#0" expanded="true" />
-            <element signature="e#1816#1817#0" expanded="true" />
-            <element signature="e#1851#1852#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-            <element signature="e#1936#1937#0" expanded="true" />
-            <element signature="e#1982#1983#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="274">
+          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/myapp/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="20" selection-end-column="9" />
+        <state relative-caret-position="409">
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
