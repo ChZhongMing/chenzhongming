@@ -2,7 +2,10 @@ package com.myapp.util;
 
 import java.io.*;
 import java.nio.charset.Charset;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 文件操作工具类
@@ -20,7 +23,7 @@ public class FileUtil {
         try {
             bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), Charset.forName("utf-8")));
         } catch (FileNotFoundException e) {
-            System.out.println("系统找不到["+fileName+"]文件");
+            System.out.println("系统找不到[" + fileName + "]文件");
         }
         return bufferedReader;
     }
@@ -36,61 +39,31 @@ public class FileUtil {
         try {
             BufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), Charset.forName("utf-8")));
         } catch (FileNotFoundException e) {
-            System.out.println("系统找不到["+fileName+"]文件");
+            System.out.println("系统找不到[" + fileName + "]文件");
         }
         return BufferedWriter;
     }
 
 
-
+    /**
+     * 读取题目和答案
+     *
+     * @param questionFileName
+     * @param answerFileName
+     * @return
+     */
     public static List<String>[] readQuestion(String questionFileName, String answerFileName) {
-        BufferedReader questionReader = GetFileInputStream(questionFileName);
-        if (questionReader == null) {
+        List<String> questions = readFile(questionFileName);
+        if (questions == null) {
             return null;
         }
-        BufferedReader answerReader = GetFileInputStream(answerFileName);
-        if (answerReader == null) {
-            //先关闭题目文件流
-            try {
-                questionReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        List<String> answers = readFile(answerFileName);
+        if (answers == null) {
             return null;
         }
-        String question;
-        String answer;
         List<String>[] exercises = new List[2];
-        exercises[0] = new ArrayList<>();
-        exercises[1] = new ArrayList<>();
-        try {
-            while (true) {
-                //题目
-                question = questionReader.readLine();
-                //答案
-                answer = answerReader.readLine();
-
-                if (question == null || answer == null) {
-                    break;
-                }
-                exercises[0].add(question.substring(question.indexOf(',')+1));
-                exercises[1].add(answer.substring(answer.indexOf(',')+1));
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                questionReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                answerReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        exercises[0] = questions;
+        exercises[1] = answers;
 
         return exercises;
     }
@@ -104,7 +77,7 @@ public class FileUtil {
      */
     public static void writeQuestion(Map<String, String> exercises, String questionFileName, String answerFileName) {
         BufferedWriter questionWriter = GetFileOutputStream(questionFileName);
-        if (questionFileName == null){
+        if (questionFileName == null) {
             return;
         }
         BufferedWriter answerWriter = GetFileOutputStream(answerFileName);
@@ -139,6 +112,67 @@ public class FileUtil {
             }
             try {
                 answerWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 读取文件内容
+     *
+     * @param fileName
+     * @return
+     */
+    public static List<String> readFile(String fileName) {
+        BufferedReader bufferReader = GetFileInputStream(fileName);
+        if (bufferReader == null) {
+            return null;
+        }
+        String content;
+        List<String> exercises = new ArrayList<>();
+        try {
+            while (true) {
+                //读取内容
+                content = bufferReader.readLine();
+
+                if (content == null) {
+                    break;
+                }
+                exercises.add(content.substring(content.indexOf(',') + 1));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bufferReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return exercises;
+    }
+
+    public static void writeFile(List<String> contents, String fileName){
+        BufferedWriter bufferedWriter = GetFileOutputStream(fileName);
+        if (bufferedWriter == null) {
+            return;
+        }
+        int leng = contents.size();
+        try {
+
+            for (int index = 0; index < leng; index++) {
+                //写进文件
+                bufferedWriter.write(index+1 + "," + contents.get(index) + "\r\n");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bufferedWriter.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

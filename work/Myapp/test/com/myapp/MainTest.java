@@ -2,7 +2,10 @@ package com.myapp;
 
 
 import com.myapp.entity.Fraction;
+import com.myapp.util.FileUtil;
 import org.junit.Test;
+
+import java.util.List;
 
 public class MainTest {
 
@@ -50,5 +53,17 @@ public class MainTest {
         System.out.println(tt.matches("25|t"));
 //        System.out.println(start2);
 //        System.out.println(System.currentTimeMillis());
+    }
+
+
+    @Test
+    public void creatAnswerFile() {
+
+        Main.creatAnswerFile("题目.txt");
+    }
+
+    @Test
+    public void readQuestion() {
+        Main.exercisesCheck("./题目.txt", "./答案.txt");
     }
 }

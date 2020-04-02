@@ -11,7 +11,11 @@ import java.util.Stack;
  */
 public class CalculateUtil {
 
-    //获得前缀表达式
+    /***
+     *    获得前缀表达式
+     * @param exp
+     * @return
+     */
     public static List<String> getExpression(String exp) {
 //        String exp = "1 + ( ( 2 + 3 ) × 4 ) - 5";
         Stack<String> charStack = new Stack<>();
@@ -60,7 +64,11 @@ public class CalculateUtil {
         return expList;
     }
 
-
+    /***
+     * 计算前缀表达式
+     * @param exp
+     * @return
+     */
     public static String Calculate(String exp) {
         List<String> expression = getExpression(exp);
         String num ;
@@ -79,6 +87,10 @@ public class CalculateUtil {
                         fraction = numStack.pop();
                         fraction.reduce(numStack.pop());
                         numStack.push(fraction);
+                        //出现负值直接返回空
+                        if (numStack.peek().getVaule() < 0){
+                            return null;
+                        }
                         break;
                     case "×":
                         fraction = numStack.pop();
@@ -93,6 +105,7 @@ public class CalculateUtil {
                     default:
                         numStack.push(TransformUtil.expToFraction(num));
                 }
+
             }
             return numStack.pop().toString();
         } else {
@@ -105,6 +118,10 @@ public class CalculateUtil {
                         break;
                     case "-":
                         numStack.push(numStack.pop() - numStack.pop());
+                        //出现负值直接返回空
+                        if (numStack.peek() < 0){
+                            return null;
+                        }
                         break;
                     case "×":
                         numStack.push(numStack.pop() * numStack.pop());
@@ -112,13 +129,14 @@ public class CalculateUtil {
                     default:
                         numStack.push(Integer.parseInt(num));
                 }
+
             }
             return numStack.pop().toString();
         }
     }
     public static void main(String[] args) {
 
-        String exp = "( 3 + 1’7/8 ) × 1/2";
+        String exp = "( 3 + 1’7/8 ) × ( 1/2 )";
         String exp2 = "3 × 1 + ( ( 2 + 3 ) × 4 ) - 5";
         System.out.println(Calculate(exp));
         System.out.println(Calculate(exp2));
