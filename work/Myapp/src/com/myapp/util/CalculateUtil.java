@@ -20,7 +20,7 @@ public class CalculateUtil {
 //        String exp = "1 + ( ( 2 + 3 ) × 4 ) - 5";
         Stack<String> charStack = new Stack<>();
         Stack<String> expression = new Stack<>();
-        String[] split = exp.split("\\s+");
+        String[] split = exp.trim().split("\\s+");
         int leng = split.length;
         for (int i = leng - 1; i >= 0; i--) {
 
