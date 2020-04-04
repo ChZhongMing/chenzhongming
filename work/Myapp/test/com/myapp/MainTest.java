@@ -2,6 +2,7 @@ package com.myapp;
 
 
 import com.myapp.entity.Fraction;
+import com.myapp.production.CreateQuestion;
 import com.myapp.util.FileUtil;
 import org.junit.Test;
 
@@ -55,15 +56,21 @@ public class MainTest {
 //        System.out.println(System.currentTimeMillis());
     }
 
-
     @Test
-    public void creatAnswerFile() {
-
-        Main.creatAnswerFile("题目.txt");
+    public static void main(String[] args) {
+        CreateQuestion cq = new CreateQuestion();
+        cq.setN(5);
+        cq.CreateQuestions();
     }
-
-    @Test
-    public void readQuestion() {
-        Main.exercisesCheck("./题目.txt", "./答案.txt");
-    }
+//
+//    @Test
+//    public void creatAnswerFile() {
+//
+//        Main.creatAnswerFile("题目.txt");
+//    }
+//
+//    @Test
+//    public void readQuestion() {
+//        Main.exercisesCheck("./题目.txt", "./答案.txt");
+//    }
 }
