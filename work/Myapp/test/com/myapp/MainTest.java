@@ -59,7 +59,7 @@ public class MainTest {
     @Test
     public static void main(String[] args) {
         CreateQuestion cq = new CreateQuestion();
-        cq.setN(5);
+        cq.setR(10);
         cq.CreateQuestions();
     }
 //

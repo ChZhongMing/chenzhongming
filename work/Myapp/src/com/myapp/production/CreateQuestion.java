@@ -10,8 +10,8 @@ public class CreateQuestion {
 
     //控制题目个数，默认为10
     private int n = 10;
-    //控制题目中的数值，默认为10
-    private int r = 10;
+    //控制题目中的数值
+    private int r = -1;
 
     public void setN(int n) {
         this.n = n;
@@ -26,6 +26,7 @@ public class CreateQuestion {
 
         while(n > 0) {
             String question = this.createArithmeticExpression();
+            if (question.equals("Error")) return null;
             String answer = CalculateUtil.Calculate(question);
             if (answer == null) continue;
             System.out.println("Q:" + question + "\nA:" + answer);
@@ -47,6 +48,11 @@ public class CreateQuestion {
          * @param rightParenthesis 右括号数
          * @param adjacent 左括号是否相邻
          */
+        if (r == -1) {
+            System.out.println("请先使用\"-r\"设置参数r以控制题目中的数值范围.");
+            return "Error";
+        }
+
         StringBuffer question = new StringBuffer();
         Random random = new Random();
 
@@ -146,7 +152,7 @@ public class CreateQuestion {
                          */
                         int integer = random.nextInt(r);
                         int molecule;
-                        int denominator = random.nextInt(99) + 2;
+                        int denominator = random.nextInt(r - 1) + 2;
                         //分子小于分母
                         molecule = random.nextInt(denominator - 1) + 1;
 
