@@ -6,7 +6,9 @@ import com.myapp.production.CreateQuestion;
 import com.myapp.util.FileUtil;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainTest {
 
@@ -59,8 +61,9 @@ public class MainTest {
     @Test
     public static void main(String[] args) {
         CreateQuestion cq = new CreateQuestion();
+        Map<String ,String > q = new HashMap<>();
         cq.setR(10);
-        cq.CreateQuestions();
+        q = cq.CreateQuestions();
     }
 //
 //    @Test
