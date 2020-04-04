@@ -42,7 +42,7 @@ public class FileUtilTest {
         content.add("45");
         content.add("23");
         content.add("123");
-        content.add("2’2/3");
+        content.add("2'2/3");
 
         FileUtil.writeFile(content,"./测试写入.txt");
     }

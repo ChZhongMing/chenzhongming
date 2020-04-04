@@ -1,13 +1,16 @@
 package com.myapp;
 
+import com.myapp.production.CreateQuestion;
 import com.myapp.util.CalculateUtil;
 import com.myapp.util.FileUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
-
+    public static String QUESTION_FILE_NAME = "exercises.txt";
+    public static String ANSWER_FILE_NAME = "answer.txt";
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         switch (args.length) {
@@ -17,10 +20,14 @@ public class Main {
             case 2:
                 switch (args[0]) {
                     case "-n":
-                        //指定题目数目
+                        System.out.println("必须使用\"-r\"设置参数r以控制题目中的数值范围.");
                         break;
                     case "-r":
                         //题目中数值（自然数、真分数和真分数分母）的范围
+                        //指定题目数目
+                        CreateQuestion createQuestionR = new CreateQuestion();
+                        createQuestionR.setR(Integer.parseInt(args[1]));
+                        FileUtil.writeQuestion(createQuestionR.CreateQuestions(), QUESTION_FILE_NAME, ANSWER_FILE_NAME);
                         break;
                     case "-s":
                         //指定题目文件计算出答案文件
@@ -34,9 +41,11 @@ public class Main {
                 if ("-e".equals(args[0]) && "-a".equals(args[2])) {
                     exercisesCheck(args[1], args[3]);
                 } else if ("-n".equals(args[0]) && "-r".equals(args[2])) {
-
+                    FileUtil.writeQuestion(new CreateQuestion(Integer.parseInt(args[1]), Integer.parseInt(args[3])).CreateQuestions(),
+                            QUESTION_FILE_NAME, ANSWER_FILE_NAME);
                 } else if ("-r".equals(args[0]) && "-n".equals(args[2])) {
-
+                    FileUtil.writeQuestion(new CreateQuestion(Integer.parseInt(args[3]), Integer.parseInt(args[1])).CreateQuestions(),
+                            QUESTION_FILE_NAME, ANSWER_FILE_NAME);
                 } else {
                     System.out.println("请输入正确参数");
                 }
