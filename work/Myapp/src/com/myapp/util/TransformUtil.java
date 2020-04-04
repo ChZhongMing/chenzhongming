@@ -8,7 +8,7 @@ import com.myapp.entity.Fraction;
 public class TransformUtil {
 
     public static double FractionToDecimal(String fraction){
-        int i = fraction.indexOf('’');
+        int i = fraction.indexOf('\'');
         double integer = 0;
         double aDouble = 0;
         String[] split = fraction.split("/");
@@ -27,7 +27,7 @@ public class TransformUtil {
      * @return
      */
     public static Fraction expToFraction(String fraction){
-        int i = fraction.indexOf('’');
+        int i = fraction.indexOf('\'');
         int integer = 0;
         String[] split = fraction.split("/");
         if (i > 0) {

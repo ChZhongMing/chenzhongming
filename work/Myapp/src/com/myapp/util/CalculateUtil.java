@@ -99,7 +99,10 @@ public class CalculateUtil {
                         break;
                     case "÷":
                         fraction = numStack.pop();
-                        fraction.divide(numStack.pop());
+                        if (!fraction.divide(numStack.pop())){
+                            //除数为0
+                            return null;
+                        }
                         numStack.push(fraction);
                         break;
                     default:
@@ -136,10 +139,11 @@ public class CalculateUtil {
     }
     public static void main(String[] args) {
 
-        String exp = "( 3 + 1’7/8 ) × ( 1/2 )";
-        String exp2 = "3 × 1 + ( ( 2 + 3 ) × 4 ) - 5";
+//        String exp = "( 3 + 1'7/8 ) × ( 1/2 )";
+//        String exp2 = "3 × 1 + ( ( 2 + 3 ) × 4 ) - 5";
+        String exp = "2 ÷ ( 1/2 - 1/2 )";
         System.out.println(Calculate(exp));
-        System.out.println(Calculate(exp2));
+//        System.out.println(Calculate(exp2));
     }
 
 

@@ -26,18 +26,18 @@ public class MainTest {
         fraction.divide(2);
         System.out.println("除以2："+fraction);
         fraction.ride(fraction2);
-        System.out.println("乘3’2/3："+fraction);
+        System.out.println("乘3'2/3："+fraction);
         //除
         fraction.divide(fraction2);
-        System.out.println("除以3’2/3："+fraction);
+        System.out.println("除以3'2/3："+fraction);
         //减
         fraction.reduce(10);
         System.out.println("减10："+fraction);
         fraction.reduce(fraction2);
-        System.out.println("减3’2/3："+fraction);
+        System.out.println("减3'2/3："+fraction);
         //加
         fraction.add(fraction2);
-        System.out.println("加3’2/3："+fraction);
+        System.out.println("加3'2/3："+fraction);
         fraction.add(12);
         System.out.println("加12："+fraction);
 

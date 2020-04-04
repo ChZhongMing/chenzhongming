@@ -13,6 +13,14 @@ public class CreateQuestion {
     //控制题目中的数值
     private int r = -1;
 
+    public CreateQuestion() {
+
+    }
+    public CreateQuestion(int n, int r) {
+        this.n = n;
+        this.r = r;
+    }
+
     public void setN(int n) {
         this.n = n;
     }
@@ -23,15 +31,18 @@ public class CreateQuestion {
 
     public Map<String, String> CreateQuestions(){
         Map<String, String> questions = new HashMap<>();
-
+        int totalNum = n;
         while(n > 0) {
             String question = this.createArithmeticExpression();
             if (question.equals("Error")) return null;
             String answer = CalculateUtil.Calculate(question);
             if (answer == null) continue;
-            System.out.println("Q:" + question + "\nA:" + answer);
+//            System.out.println(n+"Q:" + question + "\nA:" + answer);
             questions.put(question, answer);
             n--;
+            if (n == 0) {
+                n = totalNum - questions.keySet().size();
+            }
         }
 
         return questions;
@@ -161,7 +172,7 @@ public class CreateQuestion {
                         molecule = random.nextInt(denominator - 1) + 1;
 
                         if (integer != 0){
-                            question.append(integer).append("’");
+                            question.append(integer).append("'");
                         }
 
                         question.append(molecule).append("/").append(denominator);

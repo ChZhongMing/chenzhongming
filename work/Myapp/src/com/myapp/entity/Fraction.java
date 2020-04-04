@@ -82,7 +82,7 @@ public class Fraction {
         }
 
         //分子小于等于0
-        while (this.molecule <= 0) {
+        while (this.molecule < 0) {
             this.molecule += this.denominator;
             this.integer--;
         }
@@ -137,18 +137,24 @@ public class Fraction {
      * 除以一个整数
      * @param num
      */
-    public void divide(int num){
+    public boolean divide(int num){
+        if (num == 0) {
+            return false;
+        }
         this.molecule += this.integer * this.denominator;
         this.integer = 0;
         this.denominator *= num;
-
+        return true;
     }
 
     /**
      * 除以一个分式
      * @param fraction
      */
-    public void divide(Fraction fraction){
+    public boolean divide(Fraction fraction){
+        if (fraction.getVaule() == 0) {
+            return false;
+        }
         if (this.integer != 0) {
             this.molecule += this.integer * this.denominator;
             this.integer = 0;
@@ -159,6 +165,7 @@ public class Fraction {
             this.denominator *= fraction.getMolecule();
         }
         this.molecule *= fraction.getDenominator();
+        return true;
     }
 
     /**
@@ -204,7 +211,7 @@ public class Fraction {
             //分母为1
             return (this.integer + this.molecule) + "";
         } else if (this.integer != 0) {
-            return this.integer + "’" + this.molecule + "/" + denominator;
+            return this.integer + "'" + this.molecule + "/" + denominator;
         } else {
             return this.molecule + "/" + denominator;
         }
