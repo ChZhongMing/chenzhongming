@@ -62,7 +62,7 @@ public class MainTest {
     public static void main(String[] args) {
         CreateQuestion cq = new CreateQuestion();
         Map<String ,String > q = new HashMap<>();
-        cq.setR(10);
+        cq.setR(1);
         q = cq.CreateQuestions();
     }
 //

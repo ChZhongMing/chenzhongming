@@ -52,6 +52,10 @@ public class CreateQuestion {
             System.out.println("请先使用\"-r\"设置参数r以控制题目中的数值范围.");
             return "Error";
         }
+        if (r <= 1){
+            System.out.println("参数r不能小于2.");
+            return "Error";
+        }
 
         StringBuffer question = new StringBuffer();
         Random random = new Random();
