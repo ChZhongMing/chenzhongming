@@ -3,10 +3,11 @@ package com.myapp;
 import com.myapp.production.CreateQuestion;
 import com.myapp.util.CalculateUtil;
 import com.myapp.util.FileUtil;
+import com.myapp.view.Gui;
+import javafx.application.Application;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static String QUESTION_FILE_NAME = "exercises.txt";
@@ -17,6 +18,11 @@ public class Main {
             case 0:
                 System.out.println("请输入参数！");
                 return;
+            case 1:
+                if ("-x".equals(args[0])) {
+                    Application.launch(Gui.class);
+                }
+                break;
             case 2:
                 switch (args[0]) {
                     case "-n":
@@ -39,7 +45,11 @@ public class Main {
                 break;
             case 4:
                 if ("-e".equals(args[0]) && "-a".equals(args[2])) {
-                    exercisesCheck(args[1], args[3]);
+                    List[] result = exercisesCheck(args[1], args[3]);
+                    if (result != null) {
+                        System.out.println("Correct: " + result[0].size() + result[0]);
+                        System.out.println("Wrong: " + result[1].size() + result[1]);
+                    }
                 } else if ("-n".equals(args[0]) && "-r".equals(args[2])) {
                     FileUtil.writeQuestion(new CreateQuestion(Integer.parseInt(args[1]), Integer.parseInt(args[3])).CreateQuestions(),
                             QUESTION_FILE_NAME, ANSWER_FILE_NAME);
@@ -63,13 +73,13 @@ public class Main {
      * @param questionFile
      * @param answerFile
      */
-    protected static void exercisesCheck(String questionFile, String answerFile) {
+    public static List<Integer>[] exercisesCheck(String questionFile, String answerFile) {
         List<Integer> Correct = new ArrayList<>();
         List<Integer> Wrong = new ArrayList<>();
         List<String>[] exercises = FileUtil.readQuestion(questionFile, answerFile);
 
         if (exercises == null) {
-            return;
+            return null;
         }
         //题目
         String answerString;
@@ -90,8 +100,10 @@ public class Main {
                 Wrong.add(i++);
             }
         }
-        System.out.println("Correct: " + Correct.size() + Correct);
-        System.out.println("Wrong: " + Wrong.size() + Wrong);
+        List[] result = new List[2];
+        result[0] = Correct;
+        result[1] = Wrong;
+        return result;
     }
 
     /**
