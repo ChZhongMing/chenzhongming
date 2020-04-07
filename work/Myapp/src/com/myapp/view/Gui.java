@@ -61,21 +61,11 @@ public class Gui extends Application {
         primaryStage.setWidth(500);
         primaryStage.setHeight(470);
         this.group = new Group();
-
-        //滚动条
-//        ScrollBar sc = new ScrollBar();
-//        sc.setMin(0);
-//        sc.setMax(500);
-//        sc.setValue(50);
-//        sc.valueProperty().addListener((ObservableValue<? extends Number> ov,
-//                                        Number old_val, Number new_val) -> {
-//            System.out.println(-new_val.doubleValue());
-//        });
-//        group.getChildren().add(sc);
-
+        //创建题目模块
         createQuestion();
+        //校验模块
         checkFunction();
-
+        //生成答案模块
         createAnswerFile();
         //设置scene后窗口放大缩小不会再有黑色
         primaryStage.setScene(new Scene(group));
@@ -107,7 +97,7 @@ public class Gui extends Application {
         label.setFont(Font.font(20));
         label.setTextFill(Paint.valueOf("black"));
         TextField num = new TextField();
-        num.setPromptText("请输入题目数量");
+        num.setPromptText("请输入题目数量（默认10）");
         num.setLayoutY(30);
         TextField range = new TextField();
         range.setPromptText("请输入数据范围");
@@ -116,15 +106,20 @@ public class Gui extends Application {
         Button button = creatButton(250, 60, "一键生成");
         //绑定鼠标点击事件
         button.setOnAction(event -> {
-            if (!num.getText().equals("") && !range.getText().equals("")) {
-                CreateQuestion createQuestionR = new CreateQuestion(Integer.parseInt(num.getText()), Integer.parseInt(range.getText()));
+            if (!range.getText().equals("")) {
+                CreateQuestion createQuestionR ;
+                if (num.getText().equals("")) {
+                    createQuestionR = new CreateQuestion(10, Integer.parseInt(range.getText()));
+                } else {
+                    createQuestionR = new CreateQuestion(Integer.parseInt(num.getText()), Integer.parseInt(range.getText()));
+                }
                 FileUtil.writeQuestion(createQuestionR.CreateQuestions(), Main.QUESTION_FILE_NAME, Main.ANSWER_FILE_NAME);
                 num.setText("");
                 range.setText("");
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.titleProperty().set("信息");
-                alert.headerTextProperty().set("请分别输入生成的题目数量及数据范围！");
+                alert.headerTextProperty().set("必须输入生成的题目的数据范围！");
                 alert.showAndWait();
             }
         });
@@ -164,36 +159,30 @@ public class Gui extends Application {
      */
 
     private void checkFunction(){
-
+        //标签
         Label checkLabel = new Label("请选择题目文件和答案文件进行校验:");
         checkLabel.setFont(Font.font(20));
         checkLabel.setTextFill(Paint.valueOf("black"));
         checkLabel.setLayoutY(120);
 
-//        Label correct = new Label("Correct: ");
-//        correct.setFont(Font.font(20));
-//        correct.setTextFill(Paint.valueOf("green"));
-//        correct.setLayoutY(200);
-//
-//        Label wrong = new Label("Wrong: ");
-//        wrong.setFont(Font.font(20));
-//        wrong.setTextFill(Paint.valueOf("red"));
-//        wrong.setLayoutY(250);
-
-        TextArea textArea = new TextArea("Correct:");
+        //文本域
+        TextArea textArea = new TextArea("Correct：");
         textArea.setFont(Font.font(20));
         textArea.setPrefWidth(500);
-        textArea.setPrefHeight(20);
+        textArea.setPrefHeight(60);
         textArea.setMaxWidth(500);
+        //自动换行
+        textArea.setWrapText(true);
         textArea.setLayoutX(0);
-        textArea.setLayoutY(200);
+        textArea.setLayoutY(190);
 
-        TextArea textArea2 = new TextArea("Wrong: ");
+        TextArea textArea2 = new TextArea("Wrong：");
         textArea2.setFont(Font.font(20));
         textArea2.setStyle("-fx-text-fill:red;");
         textArea2.setPrefWidth(500);
-        textArea2.setPrefHeight(20);
+        textArea2.setPrefHeight(60);
         textArea2.setMaxWidth(500);
+        textArea2.setWrapText(true);
         textArea2.setLayoutX(0);
         textArea2.setLayoutY(250);
 
@@ -206,11 +195,9 @@ public class Gui extends Application {
 
                 List<Integer>[] result = Main.exercisesCheck(questionFile, answerfile);
                 if (result != null) {
-//                    correct.setText("Correct: " + result[0].size() + result[0]);
-//                    wrong.setText("Wrong: " + result[1].size() + result[1]);
 
-                    textArea.setText("Correct: " + result[0].size() + result[0]);
-                    textArea2.setText("Wrong: " + result[1].size() + result[1]);
+                    textArea.setText("Correct：" + result[0].size() + result[0]);
+                    textArea2.setText("Wrong：" + result[1].size() + result[1]);
                 }
                 questionFile = null;
                 answerfile = null;
@@ -230,10 +217,8 @@ public class Gui extends Application {
         button1.setOnAction(event -> {
             questionFile = null;
             answerfile = null;
-//            correct.setText("Correct: ");
-//            wrong.setText("Wrong: ");
-            textArea.setText("Correct: ");
-            textArea2.setText("Wrong: ");
+            textArea.setText("Correct：");
+            textArea2.setText("Wrong：");
         });
         //横线
         Line line = new Line(0, 315,   500,   315);
