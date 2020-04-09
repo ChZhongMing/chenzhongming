@@ -2,6 +2,7 @@ package com.myapp.production;
 
 import com.myapp.entity.Fraction;
 import com.myapp.util.CalculateUtil;
+import com.sun.org.apache.bcel.internal.generic.ALOAD;
 
 import java.util.*;
 
@@ -12,8 +13,7 @@ public class CreateQuestion {
     //控制题目中的数值
     private int r = -1;
     //用于判断重复题目
-    private Map<ArrayList<String>, ArrayList<String>> judge = new HashMap<>();
-    private Map<Map<ArrayList<String>, ArrayList<String>>, String> re = new HashMap<>();
+    private Map<ArrayList<String>, String> judge = new IdentityHashMap<>();
 
     public CreateQuestion() {
 
@@ -90,8 +90,7 @@ public class CreateQuestion {
         int division = 0;
         boolean adjacent = false;
 
-        ArrayList<String> numAL = new ArrayList<>();
-        ArrayList<String> opAL = new ArrayList<>();
+        ArrayList<String> numOp = new ArrayList<>();
 
         //当前步数
         int i = 1;
@@ -167,7 +166,7 @@ public class CreateQuestion {
                             int integer = random.nextInt(r) + 1;
 
                             Fraction num = new Fraction(0, integer, 1);
-                            numAL.add(num.toString());
+                            numOp.add(num.toString());
 
                             question.append(integer);
                         }
@@ -175,7 +174,7 @@ public class CreateQuestion {
                             int integer = random.nextInt(r+1);
 
                             Fraction num = new Fraction(0, integer, 1);
-                            numAL.add(num.toString());
+                            numOp.add(num.toString());
 
                             question.append(integer);
                         }
@@ -195,7 +194,7 @@ public class CreateQuestion {
                         molecule = random.nextInt(denominator - 1) + 1;
 
                         Fraction num = new Fraction(integer, molecule, denominator);
-                        numAL.add(num.toString());
+                        numOp.add(num.toString());
 
                         if (integer != 0){
                             question.append(integer).append("'");
@@ -261,7 +260,7 @@ public class CreateQuestion {
                         division = i;
                     }
                 }
-                opAL.add(op);
+                numOp.add(op);
             }
             i++;
         }
@@ -270,15 +269,13 @@ public class CreateQuestion {
         String ans = CalculateUtil.Calculate(question.toString());
         if (ans == null) return "Error";
 
-        //将用到的数字和运算符重写排序存入judge中方便比对
-        sort(numAL);
-        sort(opAL);
-        judge.put(numAL, opAL);
+        //将用到的数字和运算符重写排序
+        sort(numOp);
 
         //若用到的数字、运算符相同，题目的答案也相同，则视为重复的题目
-        if (re.containsKey(judge) && re.get(judge).equals(ans)) return "Error";
+        if (judge.containsKey(numOp) && judge.get(numOp).equals(ans)) return "Error";
         else {
-            re.put(judge, ans);
+            judge.put(numOp, ans);
             return question.toString();
         }
     }
