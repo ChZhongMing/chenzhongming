@@ -1,10 +1,10 @@
 package com.myapp.production;
 
+import com.myapp.entity.Fraction;
 import com.myapp.util.CalculateUtil;
+import com.sun.org.apache.bcel.internal.generic.ALOAD;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class CreateQuestion {
 
@@ -12,6 +12,8 @@ public class CreateQuestion {
     private int n = 10;
     //控制题目中的数值
     private int r = -1;
+    //用于判断重复题目
+    private Map<ArrayList<String>, String> judge = new IdentityHashMap<>();
 
     public CreateQuestion() {
 
@@ -34,9 +36,8 @@ public class CreateQuestion {
         int totalNum = n;
         while(n > 0) {
             String question = this.createArithmeticExpression();
-            if (question.equals("Error")) return null;
+            if (question.equals("Error")) continue;
             String answer = CalculateUtil.Calculate(question);
-            if (answer == null) continue;
 //            System.out.println(n+"Q:" + question + "\nA:" + answer);
             questions.put(question, answer);
             n--;
@@ -58,6 +59,11 @@ public class CreateQuestion {
          * @param leftParenthesis 左括号数
          * @param rightParenthesis 右括号数
          * @param adjacent 左括号是否相邻
+         * @param judge 用于同时储存题目用到的数字和题目用到的运算符（不含括号，下同）
+         * @param numAL 储存题目用到的数字
+         * @param opAL 储存题目用到的运算符
+         * @param re 用于同时储存题目用到的数字和题目用到的运算符以及题目的答案
+         * @param ans 题目的答案
          */
         if (r == -1) {
             System.out.println("请先使用\"-r\"设置参数r以控制题目中的数值范围.");
@@ -83,6 +89,8 @@ public class CreateQuestion {
         int parenthesisPosition = 0;
         int division = 0;
         boolean adjacent = false;
+
+        ArrayList<String> numOp = new ArrayList<>();
 
         //当前步数
         int i = 1;
@@ -150,12 +158,26 @@ public class CreateQuestion {
                 }
 
                 //生成数字
-                switch (random.nextInt(2)){
+                switch ((random.nextInt(2))){
                     //生成整数
                     case 0: {
                         //除数不能为0
-                        if (i - 1 == division) question.append(random.nextInt(r) + 1);
-                        else question.append(random.nextInt(r + 1));
+                        if (i - 1 == division) {
+                            int integer = random.nextInt(r) + 1;
+
+                            Fraction num = new Fraction(0, integer, 1);
+                            numOp.add(num.toString());
+
+                            question.append(integer);
+                        }
+                        else {
+                            int integer = random.nextInt(r+1);
+
+                            Fraction num = new Fraction(0, integer, 1);
+                            numOp.add(num.toString());
+
+                            question.append(integer);
+                        }
                     }break;
                     //生成分数
                     case 1: {
@@ -171,9 +193,14 @@ public class CreateQuestion {
                         //分子小于分母
                         molecule = random.nextInt(denominator - 1) + 1;
 
+                        Fraction num = new Fraction(integer, molecule, denominator);
+                        numOp.add(num.toString());
+
                         if (integer != 0){
                             question.append(integer).append("'");
                         }
+
+
 
                         question.append(molecule).append("/").append(denominator);
                     }
@@ -213,19 +240,60 @@ public class CreateQuestion {
             }
             //偶数步骤时生成运算符
             else {
+                String op = "";
                 switch (random.nextInt(4)){
-                    case 0: question.append(" + ");break;
-                    case 1: question.append(" - ");break;
-                    case 2: question.append(" × ");break;
+                    case 0: {
+                        op = "+";
+                        question.append(" + ");
+                    }break;
+                    case 1: {
+                        op = "-";
+                        question.append(" - ");
+                    }break;
+                    case 2: {
+                        op = "×";
+                        question.append(" × ");
+                    }break;
                     case 3: {
+                        op = "÷";
                         question.append(" ÷ ");
                         division = i;
                     }
                 }
+                numOp.add(op);
             }
             i++;
         }
 
-        return question.toString();
+        //若答案计算过程中出现负数或除零错误，则题目生成错误
+        String ans = CalculateUtil.Calculate(question.toString());
+        if (ans == null) return "Error";
+
+        //将用到的数字和运算符重写排序
+        sort(numOp);
+
+        //若用到的数字、运算符相同，题目的答案也相同，则视为重复的题目
+        if (judge.containsKey(numOp) && judge.get(numOp).equals(ans)) return "Error";
+        else {
+            judge.put(numOp, ans);
+            return question.toString();
+        }
+    }
+
+    //重写方法，使其排序并能保留重复项
+    public static void sort(List<String> list) {
+        TreeSet<String>  ts = new TreeSet<>(new Comparator<String>() {
+
+            @Override
+            public int compare(String s1, String s2) {
+                int num = s1.compareTo(s2);
+                return num==0?1:num;
+            }
+
+        });
+
+        ts.addAll(list);
+        list.clear();
+        list.addAll(ts);
     }
 }

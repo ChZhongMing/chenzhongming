@@ -60,9 +60,8 @@ public class MainTest {
 
     @Test
     public static void main(String[] args) {
-        CreateQuestion cq = new CreateQuestion();
+        CreateQuestion cq = new CreateQuestion(100, 2);
         Map<String ,String > q = new HashMap<>();
-        cq.setR(1);
         q = cq.CreateQuestions();
     }
 //
