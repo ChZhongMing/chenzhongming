@@ -38,7 +38,7 @@ public class CreateQuestion {
             String question = this.createArithmeticExpression();
             if (question.equals("Error")) continue;
             String answer = CalculateUtil.Calculate(question);
-            System.out.println(n+"Q:" + question + "\nA:" + answer);
+//            System.out.println(n+"Q:" + question + "\nA:" + answer);
             questions.put(question, answer);
             n--;
             if (n == 0) {
