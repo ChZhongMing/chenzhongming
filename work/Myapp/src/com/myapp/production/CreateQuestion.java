@@ -2,9 +2,10 @@ package com.myapp.production;
 
 import com.myapp.entity.Fraction;
 import com.myapp.util.CalculateUtil;
-import com.sun.org.apache.bcel.internal.generic.ALOAD;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateQuestion {
 
@@ -13,7 +14,7 @@ public class CreateQuestion {
     //控制题目中的数值
     private int r = -1;
     //用于判断重复题目
-    private Map<ArrayList<String>, String> judge = new IdentityHashMap<>();
+    private Map<String, String> judge = new HashMap<>();
 
     public CreateQuestion() {
 
@@ -38,7 +39,7 @@ public class CreateQuestion {
             String question = this.createArithmeticExpression();
             if (question.equals("Error")) continue;
             String answer = CalculateUtil.Calculate(question);
-//            System.out.println(n+"Q:" + question + "\nA:" + answer);
+            System.out.println(n+"Q:" + question + "\nA:" + answer);
             questions.put(question, answer);
             n--;
             if (n == 0) {
@@ -59,10 +60,7 @@ public class CreateQuestion {
          * @param leftParenthesis 左括号数
          * @param rightParenthesis 右括号数
          * @param adjacent 左括号是否相邻
-         * @param judge 用于同时储存题目用到的数字和题目用到的运算符（不含括号，下同）
-         * @param numAL 储存题目用到的数字
-         * @param opAL 储存题目用到的运算符
-         * @param re 用于同时储存题目用到的数字和题目用到的运算符以及题目的答案
+         * @param judge 用于同时储存题目用到的数字和题目用到的运算符和答案（不含括号）
          * @param ans 题目的答案
          */
         if (r == -1) {
@@ -272,10 +270,21 @@ public class CreateQuestion {
         //将用到的数字和运算符重写排序
         sort(numOp);
 
-        //若用到的数字、运算符相同，题目的答案也相同，则视为重复的题目
-        if (judge.containsKey(numOp) && judge.get(numOp).equals(ans)) return "Error";
+        //若用到的数字、运算符相同，对应题目的答案也存在，则视为重复的题目
+
+        if (judge.containsKey(numOp.toString())) {
+            Pattern pattern = Pattern.compile("\\(" + ans + "\\)");
+            Matcher matcher = pattern.matcher(judge.get(numOp.toString()));
+            if (matcher.find()) return "Error";
+            else {
+                ans = judge.get(numOp.toString()) + "(" + ans + ")";
+                judge.put(numOp.toString(), ans);
+                return question.toString();
+            }
+        }
         else {
-            judge.put(numOp, ans);
+            ans = "(" + ans + ")";
+            judge.put(numOp.toString(), ans);
             return question.toString();
         }
     }
