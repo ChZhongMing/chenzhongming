@@ -9,6 +9,8 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainTest {
 
@@ -60,9 +62,23 @@ public class MainTest {
 
     @Test
     public static void main(String[] args) {
-        CreateQuestion cq = new CreateQuestion(100, 2);
-        Map<String ,String > q = new HashMap<>();
-        q = cq.CreateQuestions();
+        Map<String, String> m = new HashMap<>();
+        String numOp = "1";
+        String ans = "2";
+        Pattern pattern = Pattern.compile("\\(" + ans + "\\)");
+
+        ans = "(" + ans + ")";
+        m.put(numOp, ans);
+        Matcher matcher = pattern.matcher(m.get(numOp));
+        ans = "0";
+        ans = m.get(numOp) + "(" + ans + ")";
+        m.put(numOp, ans);
+        System.out.println(m.get(numOp));
+
+        if (matcher.find()) System.out.println("Error");
+        else {
+            System.out.println("Yes");
+        }
     }
 //
 //    @Test
